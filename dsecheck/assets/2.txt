@@ -1,2 +1,0 @@
-Kategorien von Empfängern
-Kategorien\\s+von\\s+Empfängern

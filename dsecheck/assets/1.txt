@@ -1,5 +1,0 @@
-Verarbeitungszwecke
-Verarbeitungszwecke
-Zwecke\\s+der\\s+Verarbeitung
-Grund\\s+der\\s+Verarbeitung
-Gründe\\s+der\\s+Verarbeitung
