@@ -2,3 +2,4 @@ Kategorien von Empfängern
 Kategorien\s+von\s+Empfängern
 Empfänger
 Empfängern
+Weitergabe\s+von\s+Daten
