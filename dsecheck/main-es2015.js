@@ -364,7 +364,7 @@ let AppComponent = class AppComponent {
                 note -= 5 / this.checks.length;
             }
         }
-        this.gesamtnote = Math.round(note * 10) / 10;
+        this.gesamtnote = Math.round(note);
     }
     doChecks() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -396,7 +396,7 @@ let AppComponent = class AppComponent {
                 }
             }
             this.checkRunning = false;
-            this.gesamtnote = Math.round(note * 10) / 10;
+            this.gesamtnote = Math.round(note);
         });
     }
     loadChecks() {
@@ -420,7 +420,7 @@ let AppComponent = class AppComponent {
                         name: checkName,
                         contents: [],
                         success: null,
-                        checks: checks
+                        checks
                     };
                     this.checks.push(checkObj);
                     console.log(checkObj);

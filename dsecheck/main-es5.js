@@ -865,7 +865,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }
 
-          this.gesamtnote = Math.round(note * 10) / 10;
+          this.gesamtnote = Math.round(note);
         }
       }, {
         key: "doChecks",
@@ -1066,7 +1066,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 87:
                     this.checkRunning = false;
-                    this.gesamtnote = Math.round(note * 10) / 10;
+                    this.gesamtnote = Math.round(note);
 
                   case 89:
                   case "end":
