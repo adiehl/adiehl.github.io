@@ -51,7 +51,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n  <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">Prüfung Auskunft / Datenschutzerklärung</a>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <main role=\"main\" class=\"col-md-12 ml-sm-auto col-lg-12 pt-3 px-4\">\n\n      <div class=\"form-group\">\n        <label for=\"gdprtext\">Hier Text einfügen</label>\n        <textarea id=\"gdprtext\" class=\"form-control\" rows=\"10\" (change)=\"contentChanged($event)\" ></textarea>\n      </div>\n      <div class=\"row\">\n        <div class=\"col\">\n          <div class=\"form-group\">\n            <div class=\"btn btn-primary\" (click)=\"doChecks()\" tabindex=\"0\" id=\"submitButton\" *ngIf=\"!checkRunning\">\n              <span>Text prüfen</span>\n            </div>\n            <div class=\"btn btn-secondary\" disabled=\"disabled\" tabindex=\"0\" *ngIf=\"checkRunning\">\n              <span>Text prüfen</span>\n            </div>\n\n          </div>\n\n        </div>\n        <div class=\"col\" id=\"loader\" *ngIf=\"checkRunning\">\n          Bitte warten <img src=\"assets/img/ajax-loader.gif\" />\n        </div>\n      </div>\n\n\n      <h2>Aktuelle Prüfung</h2>\n      <div *ngIf=\"gesamtnote != null\">\n        Gesamtnote: {{ gesamtnote }}\n      </div>\n      <div class=\"table-responsive\">\n        <table class=\"table table-striped table-sm\">\n          <thead>\n          <tr>\n            <th>#</th>\n            <th>Prüfung</th>\n            <th>Ergebnis</th>\n            <th>Textstellen</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr *ngFor=\"let check of checks; let i = index\">\n            <td>{{ i+1 }}</td>\n            <td *ngIf='check.success === true' class=\"alert-success\">\n              <svg class=\"bi bi-check\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path fill-rule=\"evenodd\" d=\"M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z\" clip-rule=\"evenodd\"/>\n              </svg>\n            </td>\n            <td *ngIf='check.success === false' class=\"alert-danger\">\n              <svg class=\"bi bi-exclamation-triangle\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path fill-rule=\"evenodd\" d=\"M7.938 2.016a.146.146 0 00-.054.057L1.027 13.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L8.12 2.073a.146.146 0 00-.054-.057A.13.13 0 008.002 2a.13.13 0 00-.064.016zm1.044-.45a1.13 1.13 0 00-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z\" clip-rule=\"evenodd\"/>\n                <path d=\"M7.002 12a1 1 0 112 0 1 1 0 01-2 0zM7.1 5.995a.905.905 0 111.8 0l-.35 3.507a.552.552 0 01-1.1 0L7.1 5.995z\"/>\n              </svg>\n            </td>\n            <td *ngIf='check.success === null' class=\"alert-secondary\">\n              <svg class=\"bi bi-question\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z\"/>\n              </svg>\n            </td>\n            <td>{{ check.name }}</td>\n            <td><div *ngIf=\"check.contents.length === 0\">(keine)</div><div *ngFor=\"let content of check.contents\">{{ content }}</div></td>\n          </tr>\n\n          </tbody>\n        </table>\n      </div>\n      <div class=\"alert alert-secondary\">\n        <svg class=\"bi bi-eye-slash\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z\"/>\n          <path d=\"M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z\"/>\n          <path d=\"M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709z\"/>\n          <path fill-rule=\"evenodd\" d=\"M13.646 14.354l-12-12 .708-.708 12 12-.708.708z\" clip-rule=\"evenodd\"/>\n        </svg>\n        In dieser Anwendung werden alle Daten lokal verarbeitet, es findet keine Übertragung an das Internet statt.\n      </div>\n    </main>\n  </div>\n</div>\n\n\n<router-outlet></router-outlet>\n";
+    __webpack_exports__["default"] = "<nav class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0\">\n  <a class=\"navbar-brand col-sm-3 col-md-2 mr-0\" href=\"#\">Prüfung Auskunft / Datenschutzerklärung</a>\n</nav>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n\n    <main role=\"main\" class=\"col-md-12 ml-sm-auto col-lg-12 pt-3 px-4\">\n\n      <div class=\"form-group\">\n        <label for=\"gdprtext\">Hier Text einfügen</label>\n        <textarea id=\"gdprtext\" class=\"form-control\" rows=\"10\" (change)=\"contentChanged($event)\" ></textarea>\n      </div>\n      <div class=\"row\">\n        <div class=\"col\">\n          <div class=\"form-group\">\n            <div class=\"btn btn-primary\" (click)=\"doChecks()\" tabindex=\"0\" id=\"submitButton\" *ngIf=\"!checkRunning\">\n              <span>Text prüfen</span>\n            </div>\n            <div class=\"btn btn-secondary\" disabled=\"disabled\" tabindex=\"0\" *ngIf=\"checkRunning\">\n              <span>Text prüfen</span>\n            </div>\n\n          </div>\n\n        </div>\n        <div class=\"col\" id=\"loader\" *ngIf=\"checkRunning\">\n          Bitte warten <img src=\"assets/img/ajax-loader.gif\" />\n        </div>\n      </div>\n\n\n      <h2>Aktuelle Prüfung</h2>\n      <div *ngIf=\"gesamtnote != null\">\n        Gesamtnote: {{ gesamtnote }}\n      </div>\n      <div class=\"table-responsive\">\n        <table class=\"table table-striped table-sm\">\n          <thead>\n          <tr>\n            <th>#</th>\n            <th>Prüfung</th>\n            <th>Ergebnis</th>\n            <th>Textstellen</th>\n          </tr>\n          </thead>\n          <tbody>\n          <tr *ngFor=\"let check of checks; let i = index\">\n            <td>{{ i+1 }}</td>\n            <td *ngIf='check.success === true' class=\"alert-success\" (click)=\"toggle(check)\">\n              <svg class=\"bi bi-check\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path fill-rule=\"evenodd\" d=\"M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z\" clip-rule=\"evenodd\"/>\n              </svg>\n            </td>\n            <td *ngIf='check.success === false' class=\"alert-danger\" (click)=\"toggle(check)\">\n              <svg class=\"bi bi-exclamation-triangle\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path fill-rule=\"evenodd\" d=\"M7.938 2.016a.146.146 0 00-.054.057L1.027 13.74a.176.176 0 00-.002.183c.016.03.037.05.054.06.015.01.034.017.066.017h13.713a.12.12 0 00.066-.017.163.163 0 00.055-.06.176.176 0 00-.003-.183L8.12 2.073a.146.146 0 00-.054-.057A.13.13 0 008.002 2a.13.13 0 00-.064.016zm1.044-.45a1.13 1.13 0 00-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566z\" clip-rule=\"evenodd\"/>\n                <path d=\"M7.002 12a1 1 0 112 0 1 1 0 01-2 0zM7.1 5.995a.905.905 0 111.8 0l-.35 3.507a.552.552 0 01-1.1 0L7.1 5.995z\"/>\n              </svg>\n            </td>\n            <td *ngIf='check.success === null' class=\"alert-secondary\">\n              <svg class=\"bi bi-question\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z\"/>\n              </svg>\n            </td>\n            <td>{{ check.name }}</td>\n            <td><div *ngIf=\"check.contents.length === 0\">(keine)</div><div *ngFor=\"let content of check.contents\">{{ content }}</div></td>\n          </tr>\n\n          </tbody>\n        </table>\n      </div>\n      <div class=\"alert alert-secondary\">\n        <svg class=\"bi bi-eye-slash\" width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 00-2.79.588l.77.771A5.944 5.944 0 018 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0114.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z\"/>\n          <path d=\"M11.297 9.176a3.5 3.5 0 00-4.474-4.474l.823.823a2.5 2.5 0 012.829 2.829l.822.822zm-2.943 1.299l.822.822a3.5 3.5 0 01-4.474-4.474l.823.823a2.5 2.5 0 002.829 2.829z\"/>\n          <path d=\"M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 001.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 018 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709z\"/>\n          <path fill-rule=\"evenodd\" d=\"M13.646 14.354l-12-12 .708-.708 12 12-.708.708z\" clip-rule=\"evenodd\"/>\n        </svg>\n        In dieser Anwendung werden alle Daten lokal verarbeitet, es findet keine Übertragung an das Internet statt.\n      </div>\n    </main>\n  </div>\n</div>\n\n\n<router-outlet></router-outlet>\n";
     /***/
   },
 
@@ -828,12 +828,52 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "toggle",
+        value: function toggle(check) {
+          if (!check.success) {
+            check.success = true;
+          } else {
+            check.success = false;
+          }
+
+          var note = 6; // rerun calculation
+
+          var _iteratorNormalCompletion2 = true;
+          var _didIteratorError2 = false;
+          var _iteratorError2 = undefined;
+
+          try {
+            for (var _iterator2 = this.checks[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+              var currentCheck = _step2.value;
+
+              if (currentCheck.success) {
+                note -= 5 / this.checks.length;
+              }
+            }
+          } catch (err) {
+            _didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+                _iterator2.return();
+              }
+            } finally {
+              if (_didIteratorError2) {
+                throw _iteratorError2;
+              }
+            }
+          }
+
+          this.gesamtnote = Math.round(note * 10) / 10;
+        }
+      }, {
         key: "doChecks",
         value: function doChecks() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
           regeneratorRuntime.mark(function _callee3() {
-            var note, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, currentCheck, line, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, row, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, check, regex;
+            var note, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, currentCheck, line, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, row, _iteratorNormalCompletion5, _didIteratorError5, _iteratorError5, _iterator5, _step5, check, regex;
 
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -843,48 +883,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this.gesamtnote = null;
                     this.resetChecks();
                     note = 6;
-                    _iteratorNormalCompletion2 = true;
-                    _didIteratorError2 = false;
-                    _iteratorError2 = undefined;
+                    _iteratorNormalCompletion3 = true;
+                    _didIteratorError3 = false;
+                    _iteratorError3 = undefined;
                     _context3.prev = 7;
-                    _iterator2 = this.checks[Symbol.iterator]();
+                    _iterator3 = this.checks[Symbol.iterator]();
 
                   case 9:
-                    if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
+                    if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
                       _context3.next = 73;
                       break;
                     }
 
-                    currentCheck = _step2.value;
+                    currentCheck = _step3.value;
                     line = 0;
-                    _iteratorNormalCompletion3 = true;
-                    _didIteratorError3 = false;
-                    _iteratorError3 = undefined;
+                    _iteratorNormalCompletion4 = true;
+                    _didIteratorError4 = false;
+                    _iteratorError4 = undefined;
                     _context3.prev = 15;
-                    _iterator3 = this.gdprcontent.split('\n')[Symbol.iterator]();
+                    _iterator4 = this.gdprcontent.split('\n')[Symbol.iterator]();
 
                   case 17:
-                    if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
+                    if (_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done) {
                       _context3.next = 54;
                       break;
                     }
 
-                    row = _step3.value;
+                    row = _step4.value;
                     line++;
                     console.log('Checking row: ' + row);
-                    _iteratorNormalCompletion4 = true;
-                    _didIteratorError4 = false;
-                    _iteratorError4 = undefined;
+                    _iteratorNormalCompletion5 = true;
+                    _didIteratorError5 = false;
+                    _iteratorError5 = undefined;
                     _context3.prev = 24;
-                    _iterator4 = currentCheck.checks[Symbol.iterator]();
+                    _iterator5 = currentCheck.checks[Symbol.iterator]();
 
                   case 26:
-                    if (_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done) {
+                    if (_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done) {
                       _context3.next = 37;
                       break;
                     }
 
-                    check = _step4.value;
+                    check = _step5.value;
                     console.log('Check: ' + check);
                     regex = new RegExp("".concat(check), 'i');
 
@@ -898,7 +938,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return _context3.abrupt("continue", 34);
 
                   case 34:
-                    _iteratorNormalCompletion4 = true;
+                    _iteratorNormalCompletion5 = true;
                     _context3.next = 26;
                     break;
 
@@ -909,26 +949,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 39:
                     _context3.prev = 39;
                     _context3.t0 = _context3["catch"](24);
-                    _didIteratorError4 = true;
-                    _iteratorError4 = _context3.t0;
+                    _didIteratorError5 = true;
+                    _iteratorError5 = _context3.t0;
 
                   case 43:
                     _context3.prev = 43;
                     _context3.prev = 44;
 
-                    if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
-                      _iterator4.return();
+                    if (!_iteratorNormalCompletion5 && _iterator5.return != null) {
+                      _iterator5.return();
                     }
 
                   case 46:
                     _context3.prev = 46;
 
-                    if (!_didIteratorError4) {
+                    if (!_didIteratorError5) {
                       _context3.next = 49;
                       break;
                     }
 
-                    throw _iteratorError4;
+                    throw _iteratorError5;
 
                   case 49:
                     return _context3.finish(46);
@@ -937,7 +977,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return _context3.finish(43);
 
                   case 51:
-                    _iteratorNormalCompletion3 = true;
+                    _iteratorNormalCompletion4 = true;
                     _context3.next = 17;
                     break;
 
@@ -948,26 +988,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 56:
                     _context3.prev = 56;
                     _context3.t1 = _context3["catch"](15);
-                    _didIteratorError3 = true;
-                    _iteratorError3 = _context3.t1;
+                    _didIteratorError4 = true;
+                    _iteratorError4 = _context3.t1;
 
                   case 60:
                     _context3.prev = 60;
                     _context3.prev = 61;
 
-                    if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
-                      _iterator3.return();
+                    if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+                      _iterator4.return();
                     }
 
                   case 63:
                     _context3.prev = 63;
 
-                    if (!_didIteratorError3) {
+                    if (!_didIteratorError4) {
                       _context3.next = 66;
                       break;
                     }
 
-                    throw _iteratorError3;
+                    throw _iteratorError4;
 
                   case 66:
                     return _context3.finish(63);
@@ -986,7 +1026,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }
 
                   case 70:
-                    _iteratorNormalCompletion2 = true;
+                    _iteratorNormalCompletion3 = true;
                     _context3.next = 9;
                     break;
 
@@ -997,26 +1037,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 75:
                     _context3.prev = 75;
                     _context3.t2 = _context3["catch"](7);
-                    _didIteratorError2 = true;
-                    _iteratorError2 = _context3.t2;
+                    _didIteratorError3 = true;
+                    _iteratorError3 = _context3.t2;
 
                   case 79:
                     _context3.prev = 79;
                     _context3.prev = 80;
 
-                    if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-                      _iterator2.return();
+                    if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                      _iterator3.return();
                     }
 
                   case 82:
                     _context3.prev = 82;
 
-                    if (!_didIteratorError2) {
+                    if (!_didIteratorError3) {
                       _context3.next = 85;
                       break;
                     }
 
-                    throw _iteratorError2;
+                    throw _iteratorError3;
 
                   case 85:
                     return _context3.finish(82);
@@ -1026,7 +1066,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                   case 87:
                     this.checkRunning = false;
-                    this.gesamtnote = Math.round(note);
+                    this.gesamtnote = Math.round(note * 10) / 10;
 
                   case 89:
                   case "end":
