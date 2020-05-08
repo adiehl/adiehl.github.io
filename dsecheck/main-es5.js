@@ -935,7 +935,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
                     currentCheck.success = true;
                     currentCheck.contents.push('Z' + line.toString() + ': ' + row);
-                    return _context3.abrupt("continue", 34);
+                    return _context3.abrupt("break", 37);
 
                   case 34:
                     _iteratorNormalCompletion5 = true;
